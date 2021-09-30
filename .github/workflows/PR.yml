@@ -1,12 +1,24 @@
-name: test
+name: Test
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:  
-  release:
+  test:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+          
+      - name: Install dependencies
+        run: yarn
+        
+      - name: Jest tests
+        run: yarn test
+        
+  build:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -21,12 +33,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-          
-      - name: Install dependencies
-        run: yarn
-        
-      - name: Test
-        run: yarn test
-        
+      
       - name: Build
         run: yarn test-build
