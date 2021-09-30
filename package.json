@@ -2,12 +2,12 @@
   "private": true,
   "name": "lhrc-suite",
   "description": "LHRC Application Suite",
-  "version": "0.0.6",
+  "version": "0.0.0",
   "author": "Michael Morrison",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
-    "build": "nextron build",
+    "build": "nextron build --publish always",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
