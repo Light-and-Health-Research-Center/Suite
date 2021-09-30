@@ -7,7 +7,8 @@
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
-    "build": "nextron build --publish always",
+    "test-build": "nextron build --publish never",
+    "build": "nextron build --publish onTag",
     "postinstall": "electron-builder install-app-deps",
     "test": "jest"
   },
