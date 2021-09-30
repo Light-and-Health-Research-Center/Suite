@@ -18,4 +18,5 @@ files:
     filter:
       - package.json
       - app
-publish: always
+publish:
+  - github
