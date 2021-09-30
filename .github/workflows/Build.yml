@@ -21,12 +21,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-          
-      - name: Install dependencies
-        run: yarn
-        
-      - name: Test
-        run: yarn test
       
       - name: Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
