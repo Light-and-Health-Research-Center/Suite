@@ -1,5 +1,7 @@
 appId: LHRC Suite
 win:
+  publish:
+    - github
   target:
     - nsis
 nsis:
