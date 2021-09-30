@@ -1,0 +1,19 @@
+appId: LHRC Suite
+win:
+  target:
+    - nsis
+nsis:
+  allowToChangeInstallationDirectory: true
+  oneClick: false
+  uninstallDisplayName: LHRC Suite
+productName: LHRC Suite
+copyright: Copyright © 2021 Light and Health Research Center
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
