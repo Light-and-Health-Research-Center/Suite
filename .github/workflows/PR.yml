@@ -1,11 +1,11 @@
-name: Test
+name: Pull Request
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:  
-  test:
+  jest:
     runs-on: ubuntu-latest
 
     steps:
