@@ -1,22 +1,23 @@
-appId: LHRC Suite
-win:
-  publish:
-    - github
-  target:
-    - nsis
-nsis:
-  allowToChangeInstallationDirectory: true
-  oneClick: false
-  uninstallDisplayName: LHRC Suite
+appId: com.LHRC.suite
 productName: LHRC Suite
-copyright: Copyright © 2021 Light and Health Research Center
-directories:
-  output: dist
-  buildResources: resources
 files:
   - from: .
     filter:
       - package.json
       - app
+directories:
+  output: dist
+  buildResources: resources
+win:
+  target: nsis
+  artifactName: "${productName} Installer v${version}.${ext}"
+nsis:
+  allowToChangeInstallationDirectory: true
+  oneClick: false
+  uninstallDisplayName: LHRC Suite
+copyright: Copyright © 2021 Light and Health Research Center
 publish:
-  - github
+  provider: github
+  repo: suite
+  owner: Light-and-Health-Research-Center
+  releaseType: release
