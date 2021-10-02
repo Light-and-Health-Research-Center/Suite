@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nextron",
     "test-build": "nextron build --publish never",
-    "build": "nextron build --publish onTag",
+    "build": "nextron build --publish onTagOrDraft",
     "postinstall": "electron-builder install-app-deps",
     "test": "jest"
   },
