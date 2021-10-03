@@ -3,6 +3,8 @@ import serve from "electron-serve";
 import { createWindow, getUsageSpecs, getVersion } from "./helpers";
 import { autoUpdater } from "electron-updater";
 
+autoUpdater.autoInstallOnAppQuit = false;
+
 const isProd = process.env.NODE_ENV === "production";
 
 if (isProd) {
@@ -13,6 +15,8 @@ if (isProd) {
 
 (async () => {
   await app.whenReady();
+
+  autoUpdater.checkForUpdatesAndNotify();
 
   const mainWindow = createWindow("main", {
     width: 1000,
