@@ -23,7 +23,7 @@ function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <p>yes</p>
+      <p>no</p>
       <p>CPU Usage: {cpuUsage.toFixed(2)}</p>
       <p>System Memory: {systemMemory.toFixed(2)} GB</p>
       <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
