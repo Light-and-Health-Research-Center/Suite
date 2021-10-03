@@ -40,7 +40,7 @@ function Home() {
       <p>System Memory: {systemMemory.toFixed(2)} GB</p>
       <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
       <p>
-        {updateDownloaded ? (
+        {updateDownloaded && (
           <>
             <button
               onClick={() => {
@@ -50,8 +50,6 @@ function Home() {
               Update
             </button>
           </>
-        ) : (
-          <span>Downloading</span>
         )}
       </p>
     </>

@@ -76,9 +76,9 @@ export default function createWindow(windowName, options) {
 
   win.on("close", saveState);
 
-  win.once("ready-to-show", async () => {
-    await autoUpdater.checkForUpdatesAndNotify();
-  });
+  // win.once("ready-to-show", async () => {
+  //   await autoUpdater.checkForUpdatesAndNotify();
+  // });
 
   return win;
 }
