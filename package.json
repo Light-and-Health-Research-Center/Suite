@@ -2,7 +2,7 @@
   "private": true,
   "name": "lhrc-suite",
   "description": "LHRC Application Suite",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "Michael Morrison",
   "main": "app/background.js",
   "scripts": {
