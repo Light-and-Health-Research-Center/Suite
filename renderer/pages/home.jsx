@@ -10,7 +10,6 @@ function Home() {
   const [version, setVersion] = useState("");
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [updateDownloaded, setUpdateDownloaded] = useState(false);
-  const [showUpdateNotification, setShowUpdateNotification] = useState(false);
   const update = () => {
     ipcRenderer.send("update");
   };
@@ -28,11 +27,9 @@ function Home() {
       setVersion(data);
     });
     ipcRenderer.on("updateAvailable", (e, data) => {
-      setShowUpdateNotification(true);
       setUpdateAvailable(true);
     });
     ipcRenderer.on("updateDownloaded", (e, data) => {
-      console.log("here");
       setUpdateDownloaded(true);
     });
   }, [ipcRenderer]);
@@ -45,9 +42,7 @@ function Home() {
       <p>CPU Usage: {cpuUsage.toFixed(2)}</p>
       <p>System Memory: {systemMemory.toFixed(2)} GB</p>
       <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
-      <div
-        className={`${showUpdateNotification ? "block" : "hidden"} border-2`}
-      >
+      <div className={`${updateAvailable ? "block" : "hidden"} border-2`}>
         <p>Update Available.</p>
         <p>
           {updateDownloaded ? (
