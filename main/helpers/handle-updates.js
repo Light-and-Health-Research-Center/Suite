@@ -1,5 +1,6 @@
 import { autoUpdater } from "electron-updater";
 
+//change
 export default function handleUpdates() {
   autoUpdater.checkForUpdatesAndNotify();
 
