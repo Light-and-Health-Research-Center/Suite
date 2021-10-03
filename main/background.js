@@ -2,11 +2,9 @@ import { app } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import { getUsageSpecs } from "./helpers";
-import { handleUpdates } from "./helpers";
+import { autoUpdater } from "electron-updater";
 
 const isProd = process.env.NODE_ENV === "production";
-
-handleUpdates();
 
 if (isProd) {
   serve({ directory: "app" });
@@ -20,6 +18,10 @@ if (isProd) {
   const mainWindow = createWindow("main", {
     width: 1000,
     height: 600,
+  });
+
+  mainWindow.once("ready-to-show", () => {
+    autoUpdater.checkForUpdatesAndNotify();
   });
 
   if (isProd) {
