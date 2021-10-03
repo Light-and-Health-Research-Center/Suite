@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
+import Header from "../components/Header";
+import { ElectronProvider } from "../components/ElectronContext";
 
-import '../styles/globals.css';
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <React.Fragment>
+    <ElectronProvider>
+      <Header />
       <Component {...pageProps} />
-    </React.Fragment>
+    </ElectronProvider>
   );
 }
 

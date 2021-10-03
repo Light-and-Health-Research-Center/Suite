@@ -21,6 +21,7 @@ if (isProd) {
   const mainWindow = createWindow("main", {
     width: 1000,
     height: 600,
+    frame: false,
   });
 
   getUsageSpecs(mainWindow);
@@ -36,6 +37,16 @@ if (isProd) {
   getVersion(app, mainWindow);
   autoUpdater.on("update-downloaded", () => {
     mainWindow.webContents.send("updateDownloaded");
+  });
+
+  ipcMain.on("close-window", () => {
+    mainWindow.close();
+  });
+  ipcMain.on("minimize-window", () => {
+    mainWindow.minimize();
+  });
+  ipcMain.on("maximize-window", () => {
+    mainWindow.maximize();
   });
 })();
 

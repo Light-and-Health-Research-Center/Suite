@@ -1,6 +1,5 @@
 import { screen, BrowserWindow } from "electron";
 import Store from "electron-store";
-import { autoUpdater } from "electron-updater";
 
 export default function createWindow(windowName, options) {
   const key = "window-state";
@@ -69,6 +68,7 @@ export default function createWindow(windowName, options) {
     ...state,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
       contextIsolation: false,
       ...options.webPreferences,
     },
