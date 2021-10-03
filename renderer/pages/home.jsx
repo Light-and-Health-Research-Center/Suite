@@ -8,7 +8,6 @@ function Home() {
   const [freeMemoryPercentage, setFreeMemoryPercentage] = useState(0);
   const [systemMemory, setSystemMemory] = useState(0);
   const [version, setVersion] = useState("");
-  const [updateAvailable, setUpdateAvailable] = useState(false);
   const [updateDownloaded, setUpdateDownloaded] = useState(false);
   const update = () => {
     ipcRenderer.send("update");
@@ -26,10 +25,8 @@ function Home() {
     ipcRenderer.on("version", (e, data) => {
       setVersion(data);
     });
-    ipcRenderer.on("updateAvailable", (e, data) => {
-      setUpdateAvailable(true);
-    });
     ipcRenderer.on("updateDownloaded", (e, data) => {
+      console.log(data);
       setUpdateDownloaded(true);
     });
   }, [ipcRenderer]);
@@ -42,25 +39,21 @@ function Home() {
       <p>CPU Usage: {cpuUsage.toFixed(2)}</p>
       <p>System Memory: {systemMemory.toFixed(2)} GB</p>
       <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
-      <div className={`${updateAvailable ? "block" : "hidden"} border-2`}>
-        <p>Update Available.</p>
-        <p>
-          {updateDownloaded ? (
-            <>
-              <span>Downloaded</span>
-              <button
-                onClick={() => {
-                  update();
-                }}
-              >
-                Update
-              </button>
-            </>
-          ) : (
-            <span>Downloading</span>
-          )}
-        </p>
-      </div>
+      <p>
+        {updateDownloaded ? (
+          <>
+            <button
+              onClick={() => {
+                update();
+              }}
+            >
+              Update
+            </button>
+          </>
+        ) : (
+          <span>Downloading</span>
+        )}
+      </p>
     </>
   );
 }

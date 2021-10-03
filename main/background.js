@@ -30,9 +30,6 @@ if (isProd) {
   }
 
   getVersion(app, mainWindow);
-  autoUpdater.on("update-available", () => {
-    mainWindow.webContents.send("updateAvailable");
-  });
   autoUpdater.on("update-downloaded", () => {
     mainWindow.webContents.send("updateDownloaded");
   });
