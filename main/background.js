@@ -1,7 +1,6 @@
-import { app } from "electron";
+import { app, ipcMain } from "electron";
 import serve from "electron-serve";
-import { createWindow } from "./helpers";
-import { getUsageSpecs } from "./helpers";
+import { createWindow, getUsageSpecs, getVersion } from "./helpers";
 import { autoUpdater } from "electron-updater";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -20,9 +19,7 @@ if (isProd) {
     height: 600,
   });
 
-  mainWindow.once("ready-to-show", () => {
-    autoUpdater.checkForUpdatesAndNotify();
-  });
+  getUsageSpecs(mainWindow);
 
   if (isProd) {
     await mainWindow.loadURL("app://./home.html");
@@ -32,9 +29,19 @@ if (isProd) {
     mainWindow.webContents.openDevTools();
   }
 
-  getUsageSpecs(mainWindow);
+  getVersion(app, mainWindow);
+  autoUpdater.on("update-available", () => {
+    mainWindow.webContents.send("updateAvailable");
+  });
+  autoUpdater.on("update-downloaded", () => {
+    mainWindow.webContents.send("updateDownloaded");
+  });
 })();
 
 app.on("window-all-closed", () => {
   app.quit();
+});
+
+ipcMain.on("update", () => {
+  autoUpdater.quitAndInstall();
 });

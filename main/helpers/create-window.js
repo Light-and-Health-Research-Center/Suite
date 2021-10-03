@@ -1,5 +1,6 @@
 import { screen, BrowserWindow } from "electron";
 import Store from "electron-store";
+import { autoUpdater } from "electron-updater";
 
 export default function createWindow(windowName, options) {
   const key = "window-state";
@@ -74,6 +75,10 @@ export default function createWindow(windowName, options) {
   });
 
   win.on("close", saveState);
+
+  win.once("ready-to-show", () => {
+    autoUpdater.checkForUpdatesAndNotify();
+  });
 
   return win;
 }
