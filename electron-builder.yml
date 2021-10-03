@@ -14,6 +14,7 @@ win:
 nsis:
   allowToChangeInstallationDirectory: true
   oneClick: false
+  perMachine: true
   uninstallDisplayName: LHRC Suite
 copyright: Copyright © 2021 Light and Health Research Center
 publish:
