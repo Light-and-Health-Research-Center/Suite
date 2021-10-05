@@ -89,11 +89,10 @@ module.exports = {
         amber: colors.amber,
         red: colors.red,
         gray: colors.gray,
+        blueGray: colors.blueGray,
       },
-      dropShadow: {
-        softerBlur: "0 0 5px rgba(0, 0, 0, 0.15)",
-        softBlur: "0 0 10px rgba(0, 0, 0, 0.15)",
-        popFromBL: "-3px 3px 3px rgba(0, 0, 0, 0.20)",
+      boxShadow: {
+        blueGrayRight: "2px 0 10px 0 rgba(15, 23, 42, 0.15)",
       },
       spacing: {
         "1/1-4gap": "calc(100% - 1rem)",

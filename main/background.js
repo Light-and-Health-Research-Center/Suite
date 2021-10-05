@@ -1,6 +1,12 @@
 import { app, ipcMain } from "electron";
 import serve from "electron-serve";
-import { createWindow, getUsageSpecs, getVersion } from "./helpers";
+import {
+  createWindow,
+  getUsageSpecs,
+  getVersion,
+  handleWindowControls,
+  handleUpdate,
+} from "./helpers";
 import { autoUpdater } from "electron-updater";
 
 autoUpdater.autoInstallOnAppQuit = false;
@@ -23,8 +29,8 @@ if (isProd) {
     height: 600,
     minWidth: 800,
     minHeight: 400,
-    transparent: true,
     frame: false,
+    show: false,
   });
 
   getUsageSpecs(mainWindow);
@@ -34,29 +40,16 @@ if (isProd) {
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/home`);
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
 
-  getVersion(app, mainWindow);
-  autoUpdater.on("update-downloaded", () => {
-    mainWindow.webContents.send("updateDownloaded");
-  });
+  mainWindow.show();
 
-  ipcMain.on("close-window", () => {
-    mainWindow.close();
-  });
-  ipcMain.on("minimize-window", () => {
-    mainWindow.minimize();
-  });
-  ipcMain.on("maximize-window", () => {
-    mainWindow.maximize();
-  });
+  getVersion(app, mainWindow);
+  handleWindowControls(ipcMain, mainWindow);
+  handleUpdate(mainWindow, ipcMain, autoUpdater);
 })();
 
 app.on("window-all-closed", () => {
   app.quit();
-});
-
-ipcMain.on("update", () => {
-  autoUpdater.quitAndInstall();
 });

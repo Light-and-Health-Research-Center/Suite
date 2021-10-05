@@ -7,11 +7,6 @@ function Home() {
   const [cpuUsage, setCpuUsage] = useState(0);
   const [freeMemoryPercentage, setFreeMemoryPercentage] = useState(0);
   const [systemMemory, setSystemMemory] = useState(0);
-  const [version, setVersion] = useState("");
-  const [updateDownloaded, setUpdateDownloaded] = useState(false);
-  const update = () => {
-    ipcRenderer.send("update");
-  };
   useEffect(() => {
     ipcRenderer.on("cpuUsage", (e, data) => {
       setCpuUsage(data);
@@ -22,36 +17,17 @@ function Home() {
     ipcRenderer.on("systemMemory", (e, data) => {
       setSystemMemory(data);
     });
-    ipcRenderer.on("version", (e, data) => {
-      setVersion(data);
-    });
-    ipcRenderer.on("updateDownloaded", (e, data) => {
-      console.log(data);
-      setUpdateDownloaded(true);
-    });
-  }, [ipcRenderer]);
+  }, []);
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <p>version: {version}</p>
-      <p>CPU Usage: {cpuUsage.toFixed(2)}</p>
-      <p>System Memory: {systemMemory.toFixed(2)} GB</p>
-      <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
-      <p>
-        {updateDownloaded && (
-          <>
-            <button
-              onClick={() => {
-                update();
-              }}
-            >
-              Update
-            </button>
-          </>
-        )}
-      </p>
+      <div className="text-blueGray-900 font-medium">
+        <p>CPU Usage: {cpuUsage.toFixed(2)}</p>
+        <p>System Memory: {systemMemory.toFixed(2)} GB</p>
+        <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
+      </div>
     </>
   );
 }
