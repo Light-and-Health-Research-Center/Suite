@@ -24,6 +24,7 @@ function Home() {
         <title>Home</title>
       </Head>
       <div className="text-blueGray-900 font-medium">
+        <p>A Change</p>
         <p>CPU Usage: {cpuUsage.toFixed(2)}</p>
         <p>System Memory: {systemMemory.toFixed(2)} GB</p>
         <p>Free Memory: {freeMemoryPercentage.toFixed(2)} %</p>
