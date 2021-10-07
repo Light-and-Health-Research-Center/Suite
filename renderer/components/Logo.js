@@ -3,17 +3,15 @@ import Link from "next/link";
 
 export default function Logo() {
   return (
-    <div className="relative h-20">
-      <Link href="/home">
-        <a>
-          <Image
-            src="/images/logo2.png"
-            alt="logo"
-            layout="fill"
-            objectFit="contain"
-          />
-        </a>
-      </Link>
-    </div>
+    <Link href="/home">
+      <a>
+        <img
+          className="object-contain h-20 mx-auto my-auto"
+          src="/images/logo2.webp"
+          alt="logo"
+          layout="fill"
+        />
+      </a>
+    </Link>
   );
 }
