@@ -5,6 +5,7 @@ import { ElectronProvider } from "../contexts/ElectronContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+  console.log(pageProps);
   return (
     <ElectronProvider>
       <Layout>

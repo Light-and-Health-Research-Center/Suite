@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
+      fontSize: {
+        "2xs": "0.7rem",
+      },
       colors: {
         barbiePink: {
           100: "#DC298D",
@@ -118,9 +121,21 @@ module.exports = {
         _hover: { raw: "(hover: hover)" },
       },
     },
+    borderWidth: {
+      DEFAULT: "1px",
+      0: "0",
+      2: "2px",
+      3: "3px",
+      4: "4px",
+      5: "5px",
+      6: "6px",
+      8: "8px",
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ["active"],
+    },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

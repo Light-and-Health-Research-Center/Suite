@@ -17,7 +17,8 @@
     "electron-serve": "^1.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.1",
-    "os-utils": "^0.0.14"
+    "os-utils": "^0.0.14",
+    "tailwind-scrollbar-hide": "^1.0.3"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.61",
