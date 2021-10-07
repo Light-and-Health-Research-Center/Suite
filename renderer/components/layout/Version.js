@@ -1,4 +1,4 @@
-import { useElectron } from "../contexts/ElectronContext";
+import { useElectron } from "../../contexts/ElectronContext";
 
 export default function Version() {
   const electron = useElectron();

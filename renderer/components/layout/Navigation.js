@@ -19,7 +19,7 @@ export default function Navigation({ collapsed }) {
         collapsed={collapsed}
       />
       <NavigationItem
-        title="Zonal"
+        title="Zonal Cavity"
         link="/zonal"
         icon="ChartBar"
         collapsed={collapsed}

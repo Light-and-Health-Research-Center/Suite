@@ -1,5 +1,5 @@
 import { DownloadIcon } from "@heroicons/react/solid";
-import { useElectron } from "../contexts/ElectronContext";
+import { useElectron } from "../../contexts/ElectronContext";
 
 export default function InstallUpdate({ collapsed }) {
   const electron = useElectron();

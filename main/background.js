@@ -2,7 +2,6 @@ import { app, ipcMain } from "electron";
 import serve from "electron-serve";
 import {
   createWindow,
-  getUsageSpecs,
   getVersion,
   handleWindowControls,
   handleUpdate,
@@ -32,8 +31,6 @@ if (isProd) {
     frame: false,
     show: false,
   });
-
-  getUsageSpecs(mainWindow);
 
   if (isProd) {
     await mainWindow.loadURL("app://./home.html");

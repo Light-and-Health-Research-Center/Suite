@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import { ElectronProvider } from "../contexts/ElectronContext";
 
 import "../styles/globals.css";

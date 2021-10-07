@@ -1,4 +1,4 @@
-import { useElectron } from "../contexts/ElectronContext";
+import { useElectron } from "../../contexts/ElectronContext";
 import { Icon } from "@iconify/react";
 export default function WindowButtons() {
   const electron = useElectron();
