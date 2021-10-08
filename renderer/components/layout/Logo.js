@@ -6,7 +6,7 @@ export default function Logo() {
       <a>
         <img
           className="object-contain h-20 mx-auto my-auto"
-          src="/images/logo2.webp"
+          src="/images/icon.webp"
           alt="logo"
           layout="fill"
         />
