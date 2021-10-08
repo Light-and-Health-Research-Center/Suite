@@ -96,6 +96,8 @@ module.exports = {
       },
       boxShadow: {
         blueGrayRight: "2px 0 10px 0 rgba(15, 23, 42, 0.15)",
+        blueGray:
+          "0px 0px 1.6px rgba(15, 23, 42, 0.024), 0px 0px 3.4px rgba(15, 23, 42, 0.033), 0px 0px 6.5px rgba(15, 23, 42, 0.041), 0px 0px 15px rgba(15, 23, 42, 0.06)",
       },
       spacing: {
         "1/1-4gap": "calc(100% - 1rem)",
