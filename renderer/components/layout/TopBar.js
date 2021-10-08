@@ -17,7 +17,9 @@ export default function TopBar() {
   }, [router]);
   return (
     <div className="bg-blueGray-700 h-11 window-drag flex justify-between text-white-100">
-      <h1 className="pl-6 my-auto font-semibold text-md uppercase">{title}</h1>
+      <h1 className="pl-6 my-auto font-medium text-md uppercase text-sm">
+        {title}
+      </h1>
       <WindowButtons />
     </div>
   );
