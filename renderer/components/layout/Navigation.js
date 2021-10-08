@@ -12,16 +12,11 @@ export default function Navigation({ collapsed }) {
       >
         CALCULATORS
       </h6>
-      <NavigationItem
-        title="RVP"
-        link="/rvp"
-        icon="ChartPie"
-        collapsed={collapsed}
-      />
+      <NavigationItem title="RVP" link="/rvp" icon="1" collapsed={collapsed} />
       <NavigationItem
         title="Zonal Cavity"
         link="/zonal"
-        icon="ChartBar"
+        icon="2"
         collapsed={collapsed}
       />
     </div>
