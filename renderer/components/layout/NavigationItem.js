@@ -10,8 +10,8 @@ export default function NavigationItem({ title, link, icon, collapsed }) {
         <div
           className={`${
             router.pathname === link
-              ? "bg-blueGray-50 border-blueGray-900"
-              : "border-opacity-0 "
+              ? "bg-blueGray-100 border-blueGray-900"
+              : "border-opacity-0"
           } border-r-4 flex h-11 px-2 text-blueGray-900 hover:bg-blueGray-200 cursor-pointer active:bg-blueGray-300`}
         >
           <ChartPieIcon
