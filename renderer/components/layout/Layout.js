@@ -4,7 +4,7 @@ import Main from "./Main";
 
 export default function Layout({ children }) {
   return (
-    <div className="bg-blueGray-50 h-screen flex">
+    <div className="bg-blueGray-100 h-screen flex">
       <SideBar />
       <div className="flex-grow">
         <TopBar />
