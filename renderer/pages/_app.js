@@ -1,15 +1,18 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import { ElectronProvider } from "../contexts/ElectronContext";
+import { RVPProvider } from "../contexts/RVPContext";
 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <ElectronProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <RVPProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </RVPProvider>
     </ElectronProvider>
   );
 }

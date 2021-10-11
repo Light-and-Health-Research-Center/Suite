@@ -16,7 +16,7 @@ export default function TopBar() {
     setTitle(titles[router.pathname]);
   }, [router]);
   return (
-    <div className="bg-blueGray-700 h-11 window-drag flex justify-between text-white-100">
+    <div className="bg-blueGray-700 h-12 window-drag flex flex-shrink-0 justify-between text-white-100">
       <h1 className="pl-6 my-auto font-medium text-md uppercase text-sm">
         {title}
       </h1>

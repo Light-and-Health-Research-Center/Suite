@@ -2,20 +2,20 @@ import { log } from "./math";
 
 /*
 args:
-  backgroundIlluminance (cd/m^2)
+  backgroundLuminance (cd/m^2)
 
 return:
   pupilRadius (mm)
 */
-export function pupilRadius(backgroundIlluminance) {
-  return 2.3859 - 1.2204 * Math.tanh(0.3 * log(backgroundIlluminance, 10));
+export function pupilRadius(backgroundLuminance) {
+  return 2.3859 - 1.2204 * Math.tanh(0.3 * log(backgroundLuminance, 10));
 }
 
 /*
 args:
   ageOfObserver (years)
   pupilRadius (mm)
-  BackgroundIlluminance (cd/m^2)
+  backgroundLuminance (cd/m^2)
 
 return:
   retinalIlluminance (age-corrected, Td)
@@ -23,10 +23,10 @@ return:
 export function retinalIlluminance(
   ageOfObserver,
   pupilRadius,
-  backgroundIlluminance
+  backgroundLuminance
 ) {
   return (
-    backgroundIlluminance *
+    backgroundLuminance *
     Math.PI *
     Math.pow(pupilRadius, 2) *
     (1 - 0.017 * (ageOfObserver - 20))
@@ -155,4 +155,66 @@ return:
 */
 export function relativeVisualPerformance(reactionTime) {
   return 1.419771 - reactionTime / 778.564411;
+}
+
+/*
+args:
+  ageOfObserver (years)
+  luminanceContrast
+  targetSize (µsr)
+  backgroundLuminance (cd/m^2)
+
+return:
+  thresholdContrast
+*/
+export function fullCalculation(
+  ageOfObserver,
+  luminanceContrast,
+  targetSize,
+  backgroundLuminance
+) {
+  const _pupilRadius = pupilRadius(backgroundLuminance);
+  const _retinalIlluminance = retinalIlluminance(
+    ageOfObserver,
+    _pupilRadius,
+    backgroundLuminance
+  );
+  const _targetLuminanceContrast = luminanceContrast;
+  const _targetSolidAngularSize = 0.000001 * targetSize;
+  const _thresholdContrast = thresholdContrast(
+    ageOfObserver,
+    targetSize,
+    _retinalIlluminance
+  );
+  const _halfSaturationConstant = halfSaturationConstant(
+    targetSize,
+    _retinalIlluminance
+  );
+  const _maximumResponse = maximumResponse(_retinalIlluminance);
+  const _performance = performance(
+    luminanceContrast,
+    _maximumResponse,
+    _thresholdContrast,
+    _halfSaturationConstant
+  );
+  const _reactionTime = reactionTime(_performance);
+  const _visibilityLevel = visibilityLevel(
+    luminanceContrast,
+    _thresholdContrast
+  );
+  const _relativeVisualPerformance = relativeVisualPerformance(_reactionTime);
+
+  return {
+    pupilRadius: _pupilRadius,
+    retinalIlluminance: _retinalIlluminance,
+    targetLuminanceContrast: _targetLuminanceContrast,
+    targetSolidAngularSize: _targetSolidAngularSize,
+    thresholdContrast: _thresholdContrast,
+    halfSaturationConstant: _halfSaturationConstant,
+    maximumResponse: _maximumResponse,
+    performance: _performance,
+    reactionTime: _reactionTime,
+    visibilityLevel: _visibilityLevel,
+    relativeVisualPerformance: _relativeVisualPerformance,
+  };
 }
